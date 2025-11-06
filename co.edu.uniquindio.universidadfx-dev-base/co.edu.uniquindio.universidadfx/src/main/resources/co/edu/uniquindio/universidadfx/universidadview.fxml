@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="713.0" prefWidth="893.0" xmlns="http://javafx.com/javafx/20.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.universidadfx.viewcontroller.UniversidadViewController">
+   <children>
+      <TabPane layoutX="14.0" layoutY="14.0" prefHeight="698.0" prefWidth="873.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Crud Estudiante">
+              <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <children>
+                          <SplitPane layoutX="14.0" layoutY="7.0" orientation="VERTICAL" prefHeight="621.0" prefWidth="931.0">
+                              <items>
+                                  <fx:include source="CrudEstudianteView.fxml" />
+                              </items>
+                          </SplitPane>
+                      </children>
+                  </AnchorPane>
+              </content>
+          </Tab>
+          <Tab text="Crud Curso">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+            </content>
+          </Tab>
+            <Tab text="Crud Docente">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>
