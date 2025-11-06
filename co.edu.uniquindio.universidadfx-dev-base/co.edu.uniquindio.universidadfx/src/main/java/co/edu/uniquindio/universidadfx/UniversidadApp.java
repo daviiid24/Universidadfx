@@ -15,6 +15,7 @@ public class UniversidadApp extends Application {
         stage.setTitle("App Universidad");
         stage.setScene(scene);
         stage.show();
+
     }
 
     public static void main(String[] args) {

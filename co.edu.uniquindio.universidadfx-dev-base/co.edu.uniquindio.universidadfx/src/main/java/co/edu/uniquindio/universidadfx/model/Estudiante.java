@@ -1,12 +1,15 @@
 package co.edu.uniquindio.universidadfx.model;
 
-public class Estudiante extends Persona{
+import java.util.ArrayList;
+
+public class Estudiante extends Persona {
 
     private double nota1;
     private double nota2;
     private double nota3;
     private double nota4;
     private double nota5;
+    private ArrayList<Curso> listaCursosAsociados = new ArrayList<>();
     private Universidad ownedByUniversidad;
 
     public Estudiante() {
@@ -58,5 +61,34 @@ public class Estudiante extends Persona{
 
     public void setNota5(double nota5) {
         this.nota5 = nota5;
+    }
+
+    public ArrayList<Curso> getListaCursosAsociados() {
+        return listaCursosAsociados;
+    }
+
+    public void setListaCursosAsociados(ArrayList<Curso> listaCursosAsociados) {
+        this.listaCursosAsociados = listaCursosAsociados;
+    }
+
+    public void agregarCurso(Curso curso) {
+        if (!listaCursosAsociados.contains(curso)) {
+            listaCursosAsociados.add(curso);
+
+            if (!curso.getListaEstudiantesAsociados().contains(this)) {
+                curso.getListaEstudiantesAsociados().add(this);
+            }
+
+            if (this.ownedByUniversidad != null) {
+                curso.setOwnedByUniversidad(this.ownedByUniversidad);
+            }
+        }
+    }
+
+    public void eliminarCurso(Curso curso) {
+        if (listaCursosAsociados.contains(curso)) {
+            listaCursosAsociados.remove(curso);
+            curso.getListaEstudiantesAsociados().remove(this);
+        }
     }
 }

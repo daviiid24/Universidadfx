@@ -52,15 +52,15 @@ public class Universidad {
     }
 
     public Estudiante crearEstudiante(String nombre,
-                                   String apellido,
-                                   int edad,
-                                   double nota1,
-                                   double nota2,
-                                   double nota3,
-                                   String identificacion) {
-        //Obtener el estduiante
+                                      String apellido,
+                                      int edad,
+                                      double nota1,
+                                      double nota2,
+                                      double nota3,
+                                      String identificacion) {
+
         Estudiante estudianteEncontrado = obtenerEstudiante(identificacion);
-        if(estudianteEncontrado == null) {
+        if (estudianteEncontrado == null) {
             Estudiante estudiante = new Estudiante();
             estudiante.setNombre(nombre);
             estudiante.setApellido(apellido);
@@ -72,15 +72,42 @@ public class Universidad {
             getListaEstudiantes().add(estudiante);
 
             return estudiante;
-        }else{
+        } else {
             return null;
         }
     }
 
-    private Estudiante obtenerEstudiante(String identificacion) {
-        Estudiante estudianteEncontrado =  null;
+    public boolean eliminarEstudiante(String idEliminar) {
+        Estudiante estudianteEncontrado = obtenerEstudiante(idEliminar);
+        if (estudianteEncontrado != null) {
+            getListaEstudiantes().remove(estudianteEncontrado);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Estudiante actualizarEstudiante(String nombre, String apellido, int edad, double nota1, double nota2, double nota3, String identificacion) {
+        Estudiante estudianteEncontrado = obtenerEstudiante(identificacion);
+        if (estudianteEncontrado.getIdentificacion().equalsIgnoreCase(identificacion)) {
+            estudianteEncontrado.setNombre(nombre);
+            estudianteEncontrado.setApellido(apellido);
+            estudianteEncontrado.setEdad(edad);
+            estudianteEncontrado.setNota1(nota1);
+            estudianteEncontrado.setNota2(nota2);
+            estudianteEncontrado.setNota3(nota3);
+            estudianteEncontrado.setIdentificacion(identificacion);
+
+            return estudianteEncontrado;
+        } else {
+            return null;
+        }
+    }
+
+    public Estudiante obtenerEstudiante(String identificacion) {
+        Estudiante estudianteEncontrado = null;
         for (Estudiante estudiante : getListaEstudiantes()) {
-            if(estudiante.getIdentificacion().equalsIgnoreCase(identificacion)) {
+            if (estudiante.getIdentificacion().equalsIgnoreCase(identificacion)) {
                 estudianteEncontrado = estudiante;
                 break;
             }
@@ -89,22 +116,222 @@ public class Universidad {
         return estudianteEncontrado;
     }
 
-    public void calcularDefinitivaEstudiante(String cedulaDocente) {
-        Docente docenteEncontrado = obtenerDocente(cedulaDocente);
-        if(docenteEncontrado != null) {
-            for (Estudiante estudiante : getListaEstudiantes()) {
-                double definitiva = docenteEncontrado.calcularDefinitivaEstudiante(
-                        estudiante.getNota1(),
-                        estudiante.getNota2(),
-                        estudiante.getNota3());
-                System.out.println("Nota definitiva del estudiante: "+ estudiante.getNombre()+ " es: "+definitiva);
-            }
+
+    public Docente crearDocente(String nombre,
+                                int edad,
+                                String correo, String identificacion) {
+
+        Docente docenteEncontrado = obtenerDocente(identificacion);
+        if (docenteEncontrado == null) {
+            Docente docente = new Docente();
+            docente.setNombre(nombre);
+            docente.setEdad(edad);
+            docente.setCorreo(correo);
+            docente.setIdentificacion(identificacion);
+            getListaDocentes().add(docente);
+
+            return docente;
+        } else {
+            return null;
         }
     }
 
-    private Docente obtenerDocente(String cedulaDocente) {
-        return null;
+    public boolean eliminarDocente(String idEliminar) {
+        Docente docenteEncontrado = obtenerDocente(idEliminar);
+        if (docenteEncontrado != null) {
+            getListaDocentes().remove(docenteEncontrado);
+            return true;
+        } else {
+            return false;
+        }
     }
+
+    public Docente actualizarDocente(String nombre,
+                                     int edad,
+                                     String correo, String identificacion) {
+        Docente docenteEncontrado = obtenerDocente(identificacion);
+        if (docenteEncontrado.getIdentificacion().equalsIgnoreCase(identificacion)) {
+            docenteEncontrado.setNombre(nombre);
+            docenteEncontrado.setEdad(edad);
+            docenteEncontrado.setCorreo(correo);
+            docenteEncontrado.setIdentificacion(identificacion);
+
+            return docenteEncontrado;
+        } else {
+            return null;
+        }
+    }
+
+    public Docente obtenerDocente(String identificacion) {
+        Docente docenteEncontrado = null;
+        for (Docente docente : getListaDocentes()) {
+            if (docente.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                docenteEncontrado = docente;
+                break;
+            }
+        }
+
+        return docenteEncontrado;
+    }
+
+    public Curso crearCurso(String nombre, String semestre, String grupo, double creditos, String jornada, String identificacion) {
+
+        Curso cursoEncontrado = obtenerCurso(identificacion);
+        if (cursoEncontrado == null) {
+            Curso curso = new Curso();
+            curso.setNombre(nombre);
+            curso.setSemestre(semestre);
+            curso.setGrupo(grupo);
+            curso.setCreditos(creditos);
+            curso.setJornada(jornada);
+            curso.setIdentificacion(identificacion);
+            getListaCursos().add(curso);
+
+            return curso;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean eliminarCurso(String idEliminar) {
+        Curso cursoEncontrado = obtenerCurso(idEliminar);
+        if (cursoEncontrado != null) {
+            getListaCursos().remove(cursoEncontrado);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Curso actualizarCurso(String nombre, String semestre, String grupo, double creditos, String jornada, String identificacion) {
+        Curso cursoEncontrado = obtenerCurso(identificacion);
+        if (cursoEncontrado.getIdentificacion().equalsIgnoreCase(identificacion)) {
+            cursoEncontrado.setNombre(nombre);
+            cursoEncontrado.setSemestre(semestre);
+            cursoEncontrado.setGrupo(grupo);
+            cursoEncontrado.setCreditos(creditos);
+            cursoEncontrado.setJornada(jornada);
+            cursoEncontrado.setIdentificacion(identificacion);
+
+            return cursoEncontrado;
+        } else {
+            return null;
+        }
+    }
+
+    public Curso obtenerCurso(String identificacion) {
+        Curso cursoEncontrado = null;
+        for (Curso curso : getListaCursos()) {
+            if (curso.getIdentificacion().equalsIgnoreCase(identificacion)) {
+                cursoEncontrado = curso;
+                break;
+            }
+        }
+
+        return cursoEncontrado;
+    }
+
+    public Rector crearRector(String nombre, String apellido, String identificacion) {
+
+        if (this.rector == null) {
+            Rector rector = new Rector();
+            rector.setNombre(nombre);
+            rector.setApellido(apellido);
+            rector.setIdentificacion(identificacion);
+            this.rector = rector;
+
+            return rector;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean eliminarRector() {
+        if (this.rector != null) {
+            this.rector = null;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Rector actualizarRector(String nombre, String apellido, String identificacion) {
+
+        if (this.rector != null) {
+            rector.setNombre(nombre);
+            rector.setApellido(apellido);
+            rector.setIdentificacion(identificacion);
+
+            return rector;
+        } else {
+            return null;
+        }
+    }
+
+    public Rector obtenerRector() {
+        return this.rector;
+    }
+
+    public boolean asociarCursoADocente(String idDocente, String idCurso) {
+        Docente docente = obtenerDocente(idDocente);
+        Curso curso = obtenerCurso(idCurso);
+
+        if (docente != null && curso != null) {
+            docente.agregarCurso(curso);
+            curso.setDocenteAsociado(docente);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void mostrarCursosDeDocente(String idDocente) {
+        Docente docente = obtenerDocente(idDocente);
+
+        if (docente != null) {
+            System.out.println("\nCursos asociados al docente " + docente.getNombre() + ":");
+            if (docente.getListaCursosAsociados().isEmpty()) {
+                System.out.println("No tiene cursos asociados.");
+            } else {
+                for (Curso curso : docente.getListaCursosAsociados()) {
+                    System.out.println("- " + curso.getNombre() + " (" + curso.getIdentificacion() + ")");
+                }
+            }
+        } else {
+            System.out.println("Docente no encontrado.");
+        }
+    }
+
+    public boolean asociarEstudianteACurso(String idEstudiante, String idCurso) {
+        Estudiante estudiante = obtenerEstudiante(idEstudiante);
+        Curso curso = obtenerCurso(idCurso);
+
+        if (estudiante != null && curso != null) {
+            curso.agregarEstudiante(estudiante);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void mostrarEstudiantesDeCurso(String idCurso) {
+        Curso curso = obtenerCurso(idCurso);
+
+        if (curso != null) {
+            System.out.println("\nEstudiantes del curso " + curso.getNombre() + ":");
+            if (curso.getListaEstudiantesAsociados().isEmpty()) {
+                System.out.println("No hay estudiantes asociados.");
+            } else {
+                for (Estudiante estudiante : curso.getListaEstudiantesAsociados()) {
+                    System.out.println("- " + estudiante.getNombre() + " (" + estudiante.getIdentificacion() + ")");
+                }
+            }
+        } else {
+            System.out.println("Curso no encontrado.");
+        }
+    }
+
+
 }
 
 
