@@ -25,14 +25,28 @@ public class ModelFactory {
         return universidad.getListaEstudiantes();
     }
 
-    public Estudiante crearEstudiante(String nombre, String apellido, String identificacion, String edad) {
+    public Estudiante crearEstudiante(String nombre, String apellido, String identificacion, String edad, String nota1, String nota2, String nota3) {
         return universidad.crearEstudiante(
                 nombre,
                 apellido,
                 Integer.parseInt(edad),
-                0.0,
-                0.0,
-                0.0,
+                Double.parseDouble(nota1),
+                Double.parseDouble(nota2),
+                Double.parseDouble(nota3),
                 identificacion);
     }
+    public Estudiante actualizarEstudiante(String nombre, String apellido, String identificacion, String edad, String nota1, String nota2, String nota3) {
+        return universidad.actualizarEstudiante(
+                nombre,
+                apellido,
+                Integer.parseInt(edad),
+                Double.parseDouble(nota1),
+                Double.parseDouble(nota2),
+                Double.parseDouble(nota3),
+                identificacion);
+    }
+    public Estudiante eliminarEstudiante(String identificacion) {
+        return universidad.eliminarEstudiante(identificacion);
+    }
+
 }

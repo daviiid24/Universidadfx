@@ -77,13 +77,13 @@ public class Universidad {
         }
     }
 
-    public boolean eliminarEstudiante(String idEliminar) {
+    public Estudiante eliminarEstudiante(String idEliminar) {
         Estudiante estudianteEncontrado = obtenerEstudiante(idEliminar);
         if (estudianteEncontrado != null) {
             getListaEstudiantes().remove(estudianteEncontrado);
-            return true;
+            return estudianteEncontrado;
         } else {
-            return false;
+            return null;
         }
     }
 
