@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="126.0" prefWidth="268.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.universidadfx.viewcontroller.CrudDocenteViewController">
+
+    <VBox prefHeight="572.0" prefWidth="773.0" spacing="10">
+        <padding>
+            <Insets bottom="20" left="20" right="20" top="20" />
+        </padding>
+   
+                          <!-- Sección del formulario -->
+        <GridPane hgap="20" prefHeight="210.0" prefWidth="637.0" style="-fx-background-color: #ffffff; -fx-border-color: #dcdcdc; -fx-border-radius: 10; -fx-background-radius: 10;" vgap="15">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+   
+                              <columnConstraints>
+                <ColumnConstraints percentWidth="20" /> <!-- Ajustado a 20% -->
+                <ColumnConstraints percentWidth="40" /> <!-- Ajustado a 40% -->
+                <ColumnConstraints percentWidth="20" />
+                <ColumnConstraints percentWidth="20" />
+            </columnConstraints>
+   
+                              <!-- Fila 1 -->
+            <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+   
+                              <Label text="Apellido:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <TextField fx:id="txtApellido" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+   
+                              <!-- Fila 2 -->
+            <Label text="Identificación:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <TextField fx:id="txtIdentificacion" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   
+                              <Label text="Edad:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <TextField fx:id="txtEdad" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   
+                              <!-- Fila 3 -->
+            <Label text="Correo:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCorreo" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+   
+                                       <!-- Botones -->
+            <HBox alignment="CENTER" spacing="25" GridPane.columnSpan="4" GridPane.rowIndex="3">
+                <padding>
+                    <Insets top="20" />
+                </padding>
+                <Button fx:id="btnAgregar" onAction="#onActionAgregar" prefWidth="120" style="-fx-background-color: #e6e6e6; -fx-border-radius: 5;" text="Agregar" />
+                <Button fx:id="btnEliminar" onAction="#onActionEliminar" prefWidth="120" style="-fx-background-color: #e6e6e6; -fx-border-radius: 5;" text="Eliminar" />
+                <Button fx:id="btnActualizar" onAction="#onActionActualizar" prefWidth="120" style="-fx-background-color: #e6e6e6; -fx-border-radius: 5;" text="Actualizar" />
+            </HBox>
+         <rowConstraints>
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+         </rowConstraints>
+        </GridPane>
+   
+                          <!-- Tabla -->
+        <VBox spacing="5" style="-fx-background-color: #ffffff; -fx-border-color: #dcdcdc; -fx-border-radius: 10; -fx-background-radius: 10;">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15" />
+            </padding>
+   
+                                       <TableView fx:id="tableDocente" prefHeight="350">
+                <columns>
+                    <TableColumn fx:id="tcNombre" prefWidth="135.20000457763672" text="Nombre" />
+                    <TableColumn fx:id="tcApellido" prefWidth="115.99996948242188" text="Apellido" />
+                    <TableColumn fx:id="tcIdentificacion" prefWidth="153.60003662109375" text="Identificación" />
+                    <TableColumn fx:id="tcEdad" prefWidth="54.39996337890625" text="Edad" />
+               <TableColumn fx:id="tcCorreo" prefWidth="96.80001831054688" text="Correo" />
+                    <TableColumn fx:id="tcCursos" prefWidth="147.20001220703125" text="Cursos Asociados" />
+                </columns>
+                <placeholder>
+                    <Label style="-fx-text-fill: gray;" text="Tabla sin contenido" />
+                </placeholder>
+            </TableView>
+        </VBox>
+
+    </VBox>
+</AnchorPane>

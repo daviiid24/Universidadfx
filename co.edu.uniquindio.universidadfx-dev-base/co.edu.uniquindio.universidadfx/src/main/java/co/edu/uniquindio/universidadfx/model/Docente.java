@@ -7,9 +7,13 @@ public class Docente extends Persona {
     private String correo;
 
     private ArrayList<Curso> listaCursosAsociados = new ArrayList<>();
+    private String cursosAsociadosTexto;
     private Universidad ownedByUniversidad;
 
     public Docente() {
+    }
+    public Docente(ArrayList<Curso> listaCursosAsociados) {
+        actualizarCursosAsociadosTexto();
     }
 
     public String getCorreo() {
@@ -26,6 +30,14 @@ public class Docente extends Persona {
 
     public void setListaCursosAsociados(ArrayList<Curso> listaCursosAsociados) {
         this.listaCursosAsociados = listaCursosAsociados;
+    }
+
+    public String getCursosAsociadosTexto() {
+        return cursosAsociadosTexto;
+    }
+
+    public void setCursosAsociadosTexto(String cursosAsociadosTexto) {
+        this.cursosAsociadosTexto = cursosAsociadosTexto;
     }
 
     public Universidad getOwnedByUniversidad() {
@@ -71,6 +83,7 @@ public class Docente extends Persona {
             if (this.ownedByUniversidad != null) {
                 curso.setOwnedByUniversidad(this.ownedByUniversidad);
             }
+            actualizarCursosAsociadosTexto();
         }
     }
 
@@ -80,4 +93,21 @@ public class Docente extends Persona {
             curso.setDocenteAsociado(null);
         }
     }
+
+    public void actualizarCursosAsociadosTexto() {
+        if (listaCursosAsociados == null || listaCursosAsociados.isEmpty()) {
+            cursosAsociadosTexto = "Sin clases";
+        } else {
+            String texto = "";
+            for (int i = 0; i < listaCursosAsociados.size(); i++) {
+                texto += listaCursosAsociados.get(i);
+                if (i < listaCursosAsociados.size() - 1) {
+                    texto += ", ";
+                }
+            }
+            cursosAsociadosTexto = texto.toString();
+        }
+    }
+
+
 }

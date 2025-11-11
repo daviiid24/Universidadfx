@@ -40,7 +40,7 @@ public class CrudEstudianteViewController {
     private TableView<Estudiante> tableEstudiante;
 
     @FXML
-    private TableColumn<Estudiante, String> tcAopellido;
+    private TableColumn<Estudiante, String> tcApellido;
 
     @FXML
     private TableColumn<Estudiante, String> tcEdad;
@@ -148,13 +148,13 @@ public class CrudEstudianteViewController {
         if (datosValidos == true){
             Estudiante estudiante = estudianteController.actualizarEstudiante(nombre,apellido,identificacion,edad, nota1, nota2, nota3);
             if(estudiante != null){
-                mostrarMensaje("Notificación", "Creación estudiante", "Estudiante creado",Alert.AlertType.CONFIRMATION);
+                mostrarMensaje("Notificación", "Actualización estudiante", "Estudiante actualizado",Alert.AlertType.CONFIRMATION);
                 tableEstudiante.refresh();
             }else{
-                mostrarMensaje("Notificación", "Creación estudiante", "Estudiante no creado",Alert.AlertType.WARNING);
+                mostrarMensaje("Notificación", "Actualización estudiante", "Estudiante no actualizado",Alert.AlertType.WARNING);
             }
         }else{
-            mostrarMensaje("Notificación", "Creación estudiante", "Campos vacios",Alert.AlertType.INFORMATION);
+            mostrarMensaje("Notificación", "Actualización estudiante", "Campos vacios",Alert.AlertType.INFORMATION);
         }
 
 
@@ -163,7 +163,7 @@ public class CrudEstudianteViewController {
         String identificacion=txtIdentificacion.getText();
         boolean datosValidos = validarCamposEliminar(identificacion);
         if (!datosValidos) {
-            mostrarMensaje("Notificación", "Eliminación usuario", "Campos vacíos", Alert.AlertType.INFORMATION);
+            mostrarMensaje("Notificación", "Eliminación estudiante", "Campos vacíos", Alert.AlertType.INFORMATION);
             return;
         }
         Estudiante estudianteEliminado = estudianteController.eliminarEstudiante(identificacion);
@@ -171,10 +171,10 @@ public class CrudEstudianteViewController {
             listaEstudiantes.removeIf(estudiante -> estudiante.getIdentificacion().equalsIgnoreCase(identificacion));
             tableEstudiante.refresh();
 
-            mostrarMensaje("Notificación", "Eliminación usuario", "Usuario eliminado", Alert.AlertType.CONFIRMATION);
+            mostrarMensaje("Notificación", "Eliminación estudiante", "Estudiante eliminado", Alert.AlertType.CONFIRMATION);
             limpiarCampos();
         } else {
-            mostrarMensaje("Notificación", "Eliminación usuario", "Usuario no encontrado", Alert.AlertType.WARNING);
+            mostrarMensaje("Notificación", "Eliminación estudiante", "Estudiante no encontrado", Alert.AlertType.WARNING);
         }
     }
 
@@ -212,7 +212,7 @@ public class CrudEstudianteViewController {
 
     private void initDataBinding() {
         tcNombre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNombre()));
-        tcAopellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
+        tcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
         tcIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
         tcEdad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getEdad())));
         tcNota1.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota1())));

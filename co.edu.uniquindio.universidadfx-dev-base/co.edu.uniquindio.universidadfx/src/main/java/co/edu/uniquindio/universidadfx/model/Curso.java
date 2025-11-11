@@ -27,7 +27,8 @@ public class Curso {
             this.ownedByUniversidad = ownedByUniversidad;
         }
 
-        public void agregarEstudiante(Estudiante estudiante) {
+
+    public void agregarEstudiante(Estudiante estudiante) {
             if (!listaEstudiantesAsociados.contains(estudiante)) {
                 listaEstudiantesAsociados.add(estudiante);
                 estudiante.agregarCurso(this);
@@ -114,4 +115,19 @@ public class Curso {
         public void setOwnedByUniversidad(Universidad ownedByUniversidad) {
             this.ownedByUniversidad = ownedByUniversidad;
         }
+
+    @Override
+    public String toString() {
+        return "Curso{" +
+                "nombre='" + nombre + '\'' +
+                ", semestre='" + semestre + '\'' +
+                ", grupo='" + grupo + '\'' +
+                ", creditos=" + creditos +
+                ", jornada='" + jornada + '\'' +
+                ", identificacion='" + identificacion + '\'' +
+                ", docenteAsociado=" + docenteAsociado +
+                ", listaEstudiantesAsociados=" + listaEstudiantesAsociados +
+                ", ownedByUniversidad=" + ownedByUniversidad +
+                '}';
     }
+}

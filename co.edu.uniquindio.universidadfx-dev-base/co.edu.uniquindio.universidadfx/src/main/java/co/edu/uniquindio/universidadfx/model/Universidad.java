@@ -117,13 +117,14 @@ public class Universidad {
     }
 
 
-    public Docente crearDocente(String nombre,
+    public Docente crearDocente(String nombre, String apellido,
                                 int edad,
                                 String correo, String identificacion) {
 
         Docente docenteEncontrado = obtenerDocente(identificacion);
         if (docenteEncontrado == null) {
             Docente docente = new Docente();
+            docente.setApellido(apellido);
             docente.setNombre(nombre);
             docente.setEdad(edad);
             docente.setCorreo(correo);
@@ -136,22 +137,23 @@ public class Universidad {
         }
     }
 
-    public boolean eliminarDocente(String idEliminar) {
+    public Docente eliminarDocente(String idEliminar) {
         Docente docenteEncontrado = obtenerDocente(idEliminar);
         if (docenteEncontrado != null) {
             getListaDocentes().remove(docenteEncontrado);
-            return true;
+            return docenteEncontrado;
         } else {
-            return false;
+            return null;
         }
     }
 
-    public Docente actualizarDocente(String nombre,
+    public Docente actualizarDocente(String nombre, String apellido,
                                      int edad,
                                      String correo, String identificacion) {
         Docente docenteEncontrado = obtenerDocente(identificacion);
         if (docenteEncontrado.getIdentificacion().equalsIgnoreCase(identificacion)) {
             docenteEncontrado.setNombre(nombre);
+            docenteEncontrado.setApellido(apellido);
             docenteEncontrado.setEdad(edad);
             docenteEncontrado.setCorreo(correo);
             docenteEncontrado.setIdentificacion(identificacion);

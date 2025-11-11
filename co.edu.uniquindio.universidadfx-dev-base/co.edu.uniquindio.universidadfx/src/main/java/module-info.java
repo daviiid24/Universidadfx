@@ -2,6 +2,7 @@ module co.edu.uniquindio.universidadfx.universidadfx {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.desktop;
+    requires javafx.base;
 
 
     opens co.edu.uniquindio.universidadfx to javafx.fxml;

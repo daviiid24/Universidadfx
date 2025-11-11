@@ -32,11 +32,36 @@ public class DataUtil {
         estudiante3.setNota1(3.0);
         estudiante3.setIdentificacion("1096");
 
+        Curso curso1 = new Curso();
+        curso1.setNombre("Fisica");
+        curso1.setGrupo("04N");
+        Curso curso2 = new Curso();
+        curso2.setNombre("Matematicas");
+        curso2.setGrupo("04N");
+        Curso curso3 = new Curso();
+        curso3.setNombre("Español");
+        curso3.setGrupo("04N");
+
+// Crear el docente y asociar los cursos
         Docente docente = new Docente();
-        docente.setNombre("Pedro");
-        docente.setApellido("Perez");
-        docente.setEdad(40);
-        docente.setCorreo("pedro@gmail.com");
+        docente.setNombre("Juan");
+        docente.setApellido("Pérez");
+        docente.setEdad(35);
+        docente.setIdentificacion("123456789");
+        docente.setEstatura(1.75);
+        docente.setCorreo("juan.perez@universidad.edu");
+        docente.setOwnedByUniversidad(universidad);
+
+// Asignar los cursos al docente
+        docente.agregarCurso(curso1);
+        docente.agregarCurso(curso2);
+        docente.agregarCurso(curso3);
+
+// Actualizar texto de los cursos asociados
+        docente.actualizarCursosAsociadosTexto();
+
+// Mostrar los datos de los cursos asociados
+        System.out.println("Cursos asociados al docente: " + docente.getCursosAsociadosTexto());
 
         universidad.getListaEstudiantes().add(estudiante1);
         universidad.getListaEstudiantes().add(estudiante2);
