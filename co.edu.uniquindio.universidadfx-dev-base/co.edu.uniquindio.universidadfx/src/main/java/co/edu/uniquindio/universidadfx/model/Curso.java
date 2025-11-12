@@ -11,12 +11,17 @@ public class Curso {
         private String identificacion;
         private Docente docenteAsociado;
         private ArrayList<Estudiante> listaEstudiantesAsociados;
+        private String estudiantesAsociadosTexto;
         private Universidad ownedByUniversidad;
         public Curso(){
 
         }
+    public Curso(ArrayList<Estudiante> listaEstudiantesAsociados) {
+        actualizarEstudiantesAsociadosTexto();
+    }
 
-        public Curso(String nombre, String semestre, String grupo, double creditos, String jornada, String identificacion, Universidad ownedByUniversidad) {
+
+    public Curso(String nombre, String semestre, String grupo, double creditos, String jornada, String identificacion, Universidad ownedByUniversidad) {
             this.nombre = nombre;
             this.semestre = semestre;
             this.grupo = grupo;
@@ -115,6 +120,21 @@ public class Curso {
         public void setOwnedByUniversidad(Universidad ownedByUniversidad) {
             this.ownedByUniversidad = ownedByUniversidad;
         }
+
+    public void actualizarEstudiantesAsociadosTexto() {
+        if (listaEstudiantesAsociados == null || listaEstudiantesAsociados.isEmpty()) {
+            estudiantesAsociadosTexto = "Sin clases";
+        } else {
+            String texto = "";
+            for (int i = 0; i < listaEstudiantesAsociados.size(); i++) {
+                texto += listaEstudiantesAsociados.get(i).getNombre();
+                if (i < listaEstudiantesAsociados.size() - 1) {
+                    texto += ", ";
+                }
+            }
+            estudiantesAsociadosTexto = texto;
+        }
+    }
 
     @Override
     public String toString() {

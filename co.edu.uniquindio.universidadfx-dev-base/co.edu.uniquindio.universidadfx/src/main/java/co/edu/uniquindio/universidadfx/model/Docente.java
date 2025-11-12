@@ -100,12 +100,12 @@ public class Docente extends Persona {
         } else {
             String texto = "";
             for (int i = 0; i < listaCursosAsociados.size(); i++) {
-                texto += listaCursosAsociados.get(i);
+                texto += listaCursosAsociados.get(i).getNombre();
                 if (i < listaCursosAsociados.size() - 1) {
                     texto += ", ";
                 }
             }
-            cursosAsociadosTexto = texto.toString();
+            cursosAsociadosTexto = texto;
         }
     }
 

@@ -9,8 +9,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-import java.util.Optional;
-
 public class CrudDocenteViewController {
     DocenteController docenteController;
     ObservableList<Docente> listaDocentes = FXCollections.observableArrayList();
@@ -190,8 +188,8 @@ public class CrudDocenteViewController {
 
     private void listenerSelection() {
         tableDocente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            docenteSeleccionado = newSelection;
-            mostrarInformacion(docenteSeleccionado);
+            cursoSeleccionado = newSelection;
+            mostrarInformacion(cursoSeleccionado);
         });
     }
 
@@ -220,7 +218,6 @@ public class CrudDocenteViewController {
         txtIdentificacion.clear();
         txtEdad.clear();
         txtCorreo.clear();
-        docenteSeleccionado = null;
         tableDocente.getSelectionModel().clearSelection();
     }
 }

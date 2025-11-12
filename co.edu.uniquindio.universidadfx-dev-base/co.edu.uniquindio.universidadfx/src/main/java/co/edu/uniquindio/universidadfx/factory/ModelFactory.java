@@ -65,27 +65,6 @@ public class ModelFactory {
     public Docente eliminarDocente(String identificacion) {
         return universidad.eliminarDocente(identificacion);
     }
-    public Rector obtenerRector() {
-        return universidad.getRector();
-    }
-
-    public Rector crearRector(String nombre, String apellido, String identificacion, String edad) {
-        return universidad.crearRector(
-                nombre,
-                apellido,
-                Integer.parseInt(edad),
-                identificacion);
-    }
-    public Rector actualizarRector(String nombre, String apellido, String identificacion, String edad) {
-        return universidad.actualizarRector(
-                nombre,
-                apellido,
-                Integer.parseInt(edad),
-                identificacion);
-    }
-    public Rector eliminarRector() {
-        return universidad.eliminarRector();
-    }
 
 
 }
