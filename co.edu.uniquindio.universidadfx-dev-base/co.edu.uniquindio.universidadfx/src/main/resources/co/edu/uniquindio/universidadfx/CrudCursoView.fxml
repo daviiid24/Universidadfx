@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="126.0" prefWidth="268.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.universidadfx.viewcontroller.CrudDocenteViewController">
+<AnchorPane prefHeight="126.0" prefWidth="268.0" style="-fx-background-color: #f7f7f7;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.universidadfx.viewcontroller.CrudCursoViewController">
 
     <VBox prefHeight="572.0" prefWidth="773.0" spacing="10">
         <padding>
@@ -37,7 +37,7 @@
             <Label text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
             <TextField fx:id="txtNombre" GridPane.columnIndex="1" GridPane.rowIndex="0" />
 
-            <Label text="Semestre" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Label text="Semestre:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
             <TextField fx:id="txtSemestre" GridPane.columnIndex="3" GridPane.rowIndex="0" />
 
             <!-- Fila 2 -->
@@ -78,12 +78,14 @@
 
             <TableView fx:id="tableCurso" prefHeight="350">
                 <columns>
-                    <TableColumn fx:id="tcNombre" prefWidth="188.0000228881836" text="Nombre" />
-                    <TableColumn fx:id="tcSemestre" prefWidth="67.199951171875" text="Semestre" />
-                    <TableColumn fx:id="tcGrupo" minWidth="0.0" prefWidth="48.800048828125" text="Grupo" />
-                    <TableColumn fx:id="tcCreditos" prefWidth="102.39990234375" text="Creditos" />
-                    <TableColumn fx:id="tcJornada" prefWidth="154.39999389648438" text="Jornada" />
-                    <TableColumn fx:id="tcIdentificacion" prefWidth="147.20001220703125" text="Identificacion" />
+                    <TableColumn fx:id="tcNombre" prefWidth="107.1999740600586" text="Nombre" />
+                    <TableColumn fx:id="tcSemestre" prefWidth="61.600006103515625" text="Semestre" />
+                    <TableColumn fx:id="tcGrupo" minWidth="0.0" prefWidth="51.20001220703125" text="Grupo" />
+                    <TableColumn fx:id="tcCreditos" prefWidth="60.0" text="Creditos" />
+                    <TableColumn fx:id="tcJornada" prefWidth="91.20001220703125" text="Jornada" />
+                    <TableColumn fx:id="tcIdentificacion" prefWidth="96.79998779296875" text="Identificacion" />
+               <TableColumn fx:id="tcDocente" prefWidth="116.80001831054688" text="Docente asociado" />
+               <TableColumn fx:id="tcEstudiantes" prefWidth="112.79995117187502" text="Estudiantes" />
                 </columns>
                 <placeholder>
                     <Label style="-fx-text-fill: gray;" text="Tabla sin contenido" />

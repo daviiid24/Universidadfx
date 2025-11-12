@@ -10,7 +10,8 @@ public class Curso {
         private String jornada;
         private String identificacion;
         private Docente docenteAsociado;
-        private ArrayList<Estudiante> listaEstudiantesAsociados;
+        private String nombreDocenteAsociado;
+        private ArrayList<Estudiante> listaEstudiantesAsociados = new ArrayList<>();
         private String estudiantesAsociadosTexto;
         private Universidad ownedByUniversidad;
         public Curso(){
@@ -121,6 +122,14 @@ public class Curso {
             this.ownedByUniversidad = ownedByUniversidad;
         }
 
+    public String getEstudiantesAsociadosTexto() {
+        return estudiantesAsociadosTexto;
+    }
+
+    public void setEstudiantesAsociadosTexto(String estudiantesAsociadosTexto) {
+        this.estudiantesAsociadosTexto = estudiantesAsociadosTexto;
+    }
+
     public void actualizarEstudiantesAsociadosTexto() {
         if (listaEstudiantesAsociados == null || listaEstudiantesAsociados.isEmpty()) {
             estudiantesAsociadosTexto = "Sin clases";
@@ -135,6 +144,15 @@ public class Curso {
             estudiantesAsociadosTexto = texto;
         }
     }
+
+    public String getNombreDocenteAsociado() {
+        if (docenteAsociado != null) {
+            return docenteAsociado.getNombre() + " " + docenteAsociado.getApellido();
+        } else {
+            return "Sin docente";
+        }
+    }
+
 
     @Override
     public String toString() {

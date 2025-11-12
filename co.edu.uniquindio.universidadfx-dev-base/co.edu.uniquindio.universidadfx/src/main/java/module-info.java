@@ -3,7 +3,6 @@ module co.edu.uniquindio.universidadfx.universidadfx {
     requires javafx.fxml;
     requires java.desktop;
     requires javafx.base;
-    requires co.edu.uniquindio.universidadfx.universidadfx;
 
 
     opens co.edu.uniquindio.universidadfx to javafx.fxml;

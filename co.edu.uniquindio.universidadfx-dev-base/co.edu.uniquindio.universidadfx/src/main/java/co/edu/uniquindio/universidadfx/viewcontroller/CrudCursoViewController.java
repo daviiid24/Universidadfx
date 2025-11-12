@@ -11,7 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
-public class CrudDocenteViewController {
+public class CrudCursoViewController {
 
     CursoController cursoController;
     ObservableList<Curso> listaCursos = FXCollections.observableArrayList();
@@ -28,6 +28,12 @@ public class CrudDocenteViewController {
 
     @FXML
     private TableView<Curso> tableCurso;
+
+    @FXML
+    private TableColumn<Curso, String> tcDocente;
+
+    @FXML
+    private TableColumn<Curso, String> tcEstudiantes;
 
     @FXML
     private TableColumn<Curso, String> tcCreditos;
@@ -87,7 +93,7 @@ public class CrudDocenteViewController {
         initView();
     }
 
-    private void crearCurso() {
+    private void agregarCurso() {
         String nombre = txtNombre.getText();
         String semestre = txtSemestre.getText();
         String grupo = txtGrupo.getText();
@@ -184,6 +190,8 @@ public class CrudDocenteViewController {
         tcCreditos.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCreditos())));
         tcJornada.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getJornada()));
         tcIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
+        tcDocente.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNombreDocenteAsociado())));
+        tcEstudiantes.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEstudiantesAsociadosTexto()));
     }
 
     private void listenerSelection() {
@@ -201,6 +209,7 @@ public class CrudDocenteViewController {
             txtCreditos.setText(String.valueOf(cursoSeleccionado.getCreditos()));
             txtJornada.setText(String.valueOf(cursoSeleccionado.getJornada()));
             txtCreditos.setText(String.valueOf(cursoSeleccionado.getCreditos()));
+            txtIdentificacion.setText(cursoSeleccionado.getIdentificacion());
         }
     }
 

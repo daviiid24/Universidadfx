@@ -50,4 +50,12 @@ public abstract class Persona {
     public void setEstatura(double estatura) {
         this.estatura = estatura;
     }
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                '}';
+    }
 }

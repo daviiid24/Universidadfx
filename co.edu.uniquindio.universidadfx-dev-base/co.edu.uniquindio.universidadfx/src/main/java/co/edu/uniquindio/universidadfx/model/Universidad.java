@@ -195,13 +195,13 @@ public class Universidad {
         }
     }
 
-    public boolean eliminarCurso(String idEliminar) {
+    public Curso eliminarCurso(String idEliminar) {
         Curso cursoEncontrado = obtenerCurso(idEliminar);
         if (cursoEncontrado != null) {
             getListaCursos().remove(cursoEncontrado);
-            return true;
+            return cursoEncontrado;
         } else {
-            return false;
+            return null;
         }
     }
 

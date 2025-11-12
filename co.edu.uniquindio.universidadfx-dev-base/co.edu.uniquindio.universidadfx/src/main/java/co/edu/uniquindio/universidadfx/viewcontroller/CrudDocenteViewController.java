@@ -188,8 +188,8 @@ public class CrudDocenteViewController {
 
     private void listenerSelection() {
         tableDocente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-            cursoSeleccionado = newSelection;
-            mostrarInformacion(cursoSeleccionado);
+            docenteSeleccionado = newSelection;
+            mostrarInformacion(docenteSeleccionado);
         });
     }
 

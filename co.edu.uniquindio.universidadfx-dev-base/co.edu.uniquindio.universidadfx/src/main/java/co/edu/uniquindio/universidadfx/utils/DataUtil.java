@@ -32,17 +32,6 @@ public class DataUtil {
         estudiante3.setNota1(3.0);
         estudiante3.setIdentificacion("1096");
 
-        Curso curso1 = new Curso();
-        curso1.setNombre("Fisica");
-        curso1.setGrupo("04N");
-        Curso curso2 = new Curso();
-        curso2.setNombre("Matematicas");
-        curso2.setGrupo("04N");
-        Curso curso3 = new Curso();
-        curso3.setNombre("Español");
-        curso3.setGrupo("04N");
-
-// Crear el docente y asociar los cursos
         Docente docente = new Docente();
         docente.setNombre("Juan");
         docente.setApellido("Pérez");
@@ -52,21 +41,21 @@ public class DataUtil {
         docente.setCorreo("juan.perez@universidad.edu");
         docente.setOwnedByUniversidad(universidad);
 
-// Asignar los cursos al docente
-        docente.agregarCurso(curso1);
-        docente.agregarCurso(curso2);
-        docente.agregarCurso(curso3);
+        Curso curso = new Curso();
+        curso.setNombre("Curso");
+        curso.setSemestre("10");
+        curso.setGrupo("04N");
+        curso.setCreditos(4);
+        curso.setJornada("Diurna");
+        curso.setIdentificacion("1095");
+        curso.setDocenteAsociado(docente);
+        curso.getListaEstudiantesAsociados().add(estudiante1);
+        curso.getListaEstudiantesAsociados().add(estudiante2);
+        curso.getListaEstudiantesAsociados().add(estudiante3);
+        curso.actualizarEstudiantesAsociadosTexto();
 
-// Actualizar texto de los cursos asociados
+        docente.getListaCursosAsociados().add(curso);
         docente.actualizarCursosAsociadosTexto();
-
-// Mostrar los datos de los cursos asociados
-        System.out.println("Cursos asociados al docente: " + docente.getCursosAsociadosTexto());
-
-        universidad.getListaEstudiantes().add(estudiante1);
-        universidad.getListaEstudiantes().add(estudiante2);
-        universidad.getListaEstudiantes().add(estudiante3);
-        universidad.getListaDocentes().add(docente);
 
         Rector rector = new Rector();
         rector.setNombre("Pedro");
@@ -74,6 +63,12 @@ public class DataUtil {
         rector.setEdad(20);
         rector.setIdentificacion("1094");
 
+
+        universidad.getListaEstudiantes().add(estudiante1);
+        universidad.getListaEstudiantes().add(estudiante2);
+        universidad.getListaEstudiantes().add(estudiante3);
+        universidad.getListaDocentes().add(docente);
+        universidad.getListaCursos().add(curso);
 
         return universidad;
     }
