@@ -68,6 +68,13 @@ public class DataUtil {
         universidad.getListaEstudiantes().add(estudiante3);
         universidad.getListaDocentes().add(docente);
 
+        Rector rector = new Rector();
+        rector.setNombre("Pedro");
+        rector.setApellido("Perez");
+        rector.setEdad(20);
+        rector.setIdentificacion("1094");
+
+
         return universidad;
     }
 }

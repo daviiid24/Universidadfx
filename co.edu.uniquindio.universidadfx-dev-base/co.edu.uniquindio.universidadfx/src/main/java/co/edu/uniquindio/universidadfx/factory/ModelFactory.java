@@ -2,6 +2,7 @@ package co.edu.uniquindio.universidadfx.factory;
 
 import co.edu.uniquindio.universidadfx.model.Docente;
 import co.edu.uniquindio.universidadfx.model.Estudiante;
+import co.edu.uniquindio.universidadfx.model.Rector;
 import co.edu.uniquindio.universidadfx.model.Universidad;
 import co.edu.uniquindio.universidadfx.utils.DataUtil;
 
@@ -63,6 +64,27 @@ public class ModelFactory {
     }
     public Docente eliminarDocente(String identificacion) {
         return universidad.eliminarDocente(identificacion);
+    }
+    public Rector obtenerRector() {
+        return universidad.getRector();
+    }
+
+    public Rector crearRector(String nombre, String apellido, String identificacion, String edad) {
+        return universidad.crearRector(
+                nombre,
+                apellido,
+                Integer.parseInt(edad),
+                identificacion);
+    }
+    public Rector actualizarRector(String nombre, String apellido, String identificacion, String edad) {
+        return universidad.actualizarRector(
+                nombre,
+                apellido,
+                Integer.parseInt(edad),
+                identificacion);
+    }
+    public Rector eliminarRector() {
+        return universidad.eliminarRector();
     }
 
 

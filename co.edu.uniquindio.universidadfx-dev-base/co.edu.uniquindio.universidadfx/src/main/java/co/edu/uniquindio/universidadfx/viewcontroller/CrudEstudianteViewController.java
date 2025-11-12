@@ -21,7 +21,7 @@ public class CrudEstudianteViewController {
     ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
     Estudiante estudianteSeleccionado;
 
-        @FXML
+    @FXML
     private ResourceBundle resources;
 
     @FXML

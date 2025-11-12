@@ -202,6 +202,7 @@ public class CrudDocenteViewController {
             txtIdentificacion.setText(docenteSeleccionado.getIdentificacion());
             txtEdad.setText(String.valueOf(docenteSeleccionado.getEdad()));
             txtCorreo.setText(String.valueOf(docenteSeleccionado.getCorreo()));
+            txtCursos.setText(docenteSeleccionado.getCursosAsociadosTexto());
         }
     }
 

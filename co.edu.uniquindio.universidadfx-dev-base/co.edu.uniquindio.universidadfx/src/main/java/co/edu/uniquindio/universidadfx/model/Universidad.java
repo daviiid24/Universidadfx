@@ -233,12 +233,13 @@ public class Universidad {
         return cursoEncontrado;
     }
 
-    public Rector crearRector(String nombre, String apellido, String identificacion) {
+    public Rector crearRector(String nombre, String apellido, int edad, String identificacion) {
 
         if (this.rector == null) {
             Rector rector = new Rector();
             rector.setNombre(nombre);
             rector.setApellido(apellido);
+            rector.setEdad(edad);
             rector.setIdentificacion(identificacion);
             this.rector = rector;
 
@@ -248,20 +249,21 @@ public class Universidad {
         }
     }
 
-    public boolean eliminarRector() {
+    public Rector eliminarRector() {
         if (this.rector != null) {
             this.rector = null;
-            return true;
+            return rector;
         } else {
-            return false;
+            return null;
         }
     }
 
-    public Rector actualizarRector(String nombre, String apellido, String identificacion) {
+    public Rector actualizarRector(String nombre, String apellido, int edad, String identificacion) {
 
         if (this.rector != null) {
             rector.setNombre(nombre);
             rector.setApellido(apellido);
+            rector.setEdad(edad);
             rector.setIdentificacion(identificacion);
 
             return rector;
