@@ -277,16 +277,34 @@ public class Universidad {
         Docente docente = obtenerDocente(idDocente);
         Curso curso = obtenerCurso(idCurso);
 
-        if (docente != null && curso != null) {
-            curso.setDocenteAsociado(docente);
-            docente.getListaCursosAsociados().add(curso);
-            docente.actualizarCursosAsociadosTexto();
-            curso.actualizarEstudiantesAsociadosTexto();
-            return true;
-        } else {
+        if (docente == null || curso == null) {
+            System.out.println("Docente o curso no encontrados");
             return false;
         }
+
+        if (curso.getDocenteAsociado() != null && curso.getDocenteAsociado().equals(docente)) {
+            System.out.println("El curso ya está asociado a este docente");
+            return false;
+        }
+
+        if (curso.getDocenteAsociado() != null && !curso.getDocenteAsociado().equals(docente)) {
+            System.out.println("El curso ya está asociado a otro docente");
+            return false;
+        }
+
+        if (docente.getListaCursosAsociados().contains(curso)) {
+            System.out.println("El docente ya tiene este curso asociado");
+            return false;
+        }
+
+        curso.setDocenteAsociado(docente);
+        docente.getListaCursosAsociados().add(curso);
+        docente.actualizarCursosAsociadosTexto();
+        curso.actualizarEstudiantesAsociadosTexto();
+        return true;
     }
+
+
 
     public boolean desasociarCursoDeDocente(String idDocente, String idCurso) {
         Docente docente = obtenerDocente(idDocente);
@@ -323,15 +341,25 @@ public class Universidad {
         Estudiante estudiante = obtenerEstudiante(idEstudiante);
         Curso curso = obtenerCurso(idCurso);
 
-        if (estudiante != null && curso != null) {
+        if (estudiante == null || curso == null) {
+            System.out.println("Estudiante o curso no encontrados");
+            return false;
+        }
+
+        if (curso.getListaEstudiantesAsociados().contains(estudiante)) {
+            System.out.println("El estudiante ya está asociado a este curso");
+            return false;
+        }
+
+        if (estudiante.getListaCursosAsociados().contains(curso)) {
+            System.out.println("El curso ya está en la lista del estudiante");
+            return false;
+        }
             curso.getListaEstudiantesAsociados().add(estudiante);
             estudiante.getListaCursosAsociados().add(curso);
             curso.actualizarEstudiantesAsociadosTexto();
             estudiante.actualizarCursosAsociadosTexto();
             return true;
-        } else {
-            return false;
-        }
     }
 
     public boolean desasociarEstudianteACurso(String idEstudiante, String idCurso) {
