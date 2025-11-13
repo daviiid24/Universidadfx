@@ -67,13 +67,21 @@ public class Docente extends Persona {
     }
 
 
-    public String obtenerEstudianteNotaMayor4(Estudiante estudiante) {
-        String resultado = "";
-        if (estudiante.getNota5() > 4.3) {
-            resultado = estudiante.getNombre() + " " + estudiante.getApellido();
+    public String obtenerEstudiantesNotaMayor4() {
+
+        String estudiantesNotaMayor = "";
+
+        for (Curso curso : listaCursosAsociados) {
+            for (Estudiante estudiante : curso.getListaEstudiantesAsociados()) {
+                if (calcularDefinitivaEstudiante(estudiante.getNota1(), estudiante.getNota2(), estudiante.getNota3()) > 4.0) {
+                    estudiantesNotaMayor += estudiante.getNombre();
+                }
+            }
         }
-        return resultado;
+
+        return estudiantesNotaMayor;
     }
+
 
     public void actualizarCursosAsociadosTexto() {
         if (listaCursosAsociados == null || listaCursosAsociados.isEmpty()) {

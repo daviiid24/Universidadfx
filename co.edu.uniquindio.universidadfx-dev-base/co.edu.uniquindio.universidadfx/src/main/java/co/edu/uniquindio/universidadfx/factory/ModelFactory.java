@@ -95,4 +95,16 @@ public class ModelFactory {
     public boolean desasociarEstudianteACurso(String idEstudiante, String idCurso) {
         return universidad.desasociarEstudianteACurso(idEstudiante, idCurso);
     }
+
+    public String consultarDefinitivas(String idDocente) {
+        return universidad.calcularDefinitivaEstudiante(idDocente);
+    }
+
+    public String consultarEstaturaMayor(String idDocente) {
+        return universidad.calcularEstudianteMayorEstatura(idDocente);
+    }
+
+    public String consultarNotasMayor(String idDocente) {
+        return universidad.mostrarEstudiantesNotaMayor4(idDocente);
+    }
 }

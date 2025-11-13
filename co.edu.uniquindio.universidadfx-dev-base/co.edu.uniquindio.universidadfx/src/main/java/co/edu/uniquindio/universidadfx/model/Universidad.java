@@ -357,42 +357,61 @@ public class Universidad {
         return false;
     }
 
-    public void calcularDefinitivaEstudiante(String idDocente) {
+    public String calcularDefinitivaEstudiante(String idDocente) {
         Docente docenteEncontrado = obtenerDocente(idDocente);
+        String resultado="";
 
         if (docenteEncontrado != null) {
             for (Estudiante estudiante : getListaEstudiantes()) {
                 double definitiva= docenteEncontrado.calcularDefinitivaEstudiante(estudiante.getNota1(),
                         estudiante.getNota2(),
                         estudiante.getNota3());
-                System.out.println("Nota definitiva del estudiante: " + estudiante.getNombre() + " es" + definitiva);
+                resultado += "Nota del estudiante: " + estudiante.getNombre() + " es " + definitiva + "\n";
+                definitiva=0.0;
             }
+        } else {
+            resultado = "El docente no existe";
         }
+        return resultado;
     }
 
 
-    public void calcularEstudianteMayorEstatura(String idDocente) {
+    public String calcularEstudianteMayorEstatura(String idDocente) {
         Docente docenteEncontrado = obtenerDocente(idDocente);
+        String resultado = "";
+
         if (docenteEncontrado != null) {
-                Estudiante mayor= docenteEncontrado.mostrarEstudianteMayorEstatura();
-                System.out.println("Nota definitiva del estudiante: " + mayor.getNombre());
+            Estudiante mayor = docenteEncontrado.mostrarEstudianteMayorEstatura();
+            if (mayor != null) {
+                resultado = "El estudiante con mayor estatura es: " + mayor.getNombre() + " " + mayor.getApellido();
+            } else {
+                resultado = "No hay estudiantes asociados al docente.";
             }
+        } else {
+            resultado = "El docente no existe.";
         }
-    }
-public String obtenerEstudiantesNotaMayor4() {
-    String estudiantes="";
 
-    for (Curso curso : listaEstudi) {
-        for (Estudiante e : curso.getListaEstudiantesAsociados()) {
-            if (e.getNota5() > 4.3) {
-                estudiantes.add(e);
-            }
-        }
+        return resultado;
     }
 
-    return estudiantes;
-}
+    public String mostrarEstudiantesNotaMayor4(String idDocente) {
+        Docente docente = obtenerDocente(idDocente);
+        String resultado = "";
 
+        if (docente != null) {
+            resultado = docente.obtenerEstudiantesNotaMayor4();
+
+            if (resultado.isEmpty()) {
+                resultado = "Ningún estudiante tiene nota mayor a 4.0";
+            } else {
+                resultado = "Estudiantes con nota mayor a 4.0:\n" + resultado;
+            }
+        } else {
+            resultado = "Docente no encontrado.";
+        }
+
+        return resultado;
+    }
 
 }
 
