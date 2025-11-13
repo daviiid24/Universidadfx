@@ -132,7 +132,7 @@ public class Curso {
 
     public void actualizarEstudiantesAsociadosTexto() {
         if (listaEstudiantesAsociados == null || listaEstudiantesAsociados.isEmpty()) {
-            estudiantesAsociadosTexto = "Sin clases";
+            estudiantesAsociadosTexto = "Sin estudiantes";
         } else {
             String texto = "";
             for (int i = 0; i < listaEstudiantesAsociados.size(); i++) {

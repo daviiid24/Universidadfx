@@ -88,9 +88,10 @@ public class CrudCursoViewController {
 
     @FXML
     void initialize() {
-
         cursoController = new CursoController();
         initView();
+
+        ControllerCommunicator.setCrudCursoViewController(this);
     }
 
     private void agregarCurso() {
@@ -231,5 +232,7 @@ public class CrudCursoViewController {
         cursoSeleccionado = null;
         tableCurso.getSelectionModel().clearSelection();
     }
-
+    public void refrescarTablaCursos() {
+        tableCurso.refresh();
+    }
 }

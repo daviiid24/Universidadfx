@@ -79,9 +79,10 @@ public class CrudDocenteViewController {
 
     @FXML
     void initialize() {
-
         docenteController = new DocenteController();
         initView();
+
+        ControllerCommunicator.setCrudDocenteViewController(this);
     }
 
     private void crearDocente() {
@@ -183,7 +184,7 @@ public class CrudDocenteViewController {
         tcIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
         tcEdad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getEdad())));
         tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
-        tcCursos.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCursosAsociadosTexto()));
+        tcCursos.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getCursosAsociadosTexto())));
     }
 
     private void listenerSelection() {
@@ -200,7 +201,6 @@ public class CrudDocenteViewController {
             txtIdentificacion.setText(docenteSeleccionado.getIdentificacion());
             txtEdad.setText(String.valueOf(docenteSeleccionado.getEdad()));
             txtCorreo.setText(String.valueOf(docenteSeleccionado.getCorreo()));
-            txtCursos.setText(docenteSeleccionado.getCursosAsociadosTexto());
         }
     }
 
@@ -220,4 +220,11 @@ public class CrudDocenteViewController {
         txtCorreo.clear();
         tableDocente.getSelectionModel().clearSelection();
     }
+    public void refrescarTablaDocentes() {
+        listaDocentes.clear();
+        listaDocentes.addAll(docenteController.obtenerDocentes());
+        tableDocente.refresh();
+    }
+
+
 }

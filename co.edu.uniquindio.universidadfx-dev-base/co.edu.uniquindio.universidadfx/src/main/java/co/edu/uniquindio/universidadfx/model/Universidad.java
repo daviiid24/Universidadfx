@@ -221,16 +221,13 @@ public class Universidad {
         }
     }
 
-    public Curso obtenerCurso(String identificacion) {
-        Curso cursoEncontrado = null;
-        for (Curso curso : getListaCursos()) {
-            if (curso.getIdentificacion().equalsIgnoreCase(identificacion)) {
-                cursoEncontrado = curso;
-                break;
+    public Curso obtenerCurso(String idCurso) {
+        for (Curso curso : listaCursos) {
+            if (curso.getIdentificacion().equals(idCurso)) {
+                return curso; // debe devolver la referencia real, no una copia
             }
         }
-
-        return cursoEncontrado;
+        return null;
     }
 
     public Rector crearRector(String nombre, String apellido, int edad, String identificacion) {
@@ -281,13 +278,27 @@ public class Universidad {
         Curso curso = obtenerCurso(idCurso);
 
         if (docente != null && curso != null) {
-            docente.agregarCurso(curso);
             curso.setDocenteAsociado(docente);
+            docente.getListaCursosAsociados().add(curso);
+            docente.actualizarCursosAsociadosTexto();
+            curso.actualizarEstudiantesAsociadosTexto();
             return true;
         } else {
             return false;
         }
     }
+
+    public boolean desasociarCursoDeDocente(String idDocente, String idCurso) {
+        Docente docente = obtenerDocente(idDocente);
+        Curso curso = obtenerCurso(idCurso);
+        if (docente != null && curso != null && curso.getDocenteAsociado() == docente) {
+            docente.getListaCursosAsociados().remove(curso);
+            curso.setDocenteAsociado(null);
+            return true;
+        }
+        return false;
+    }
+
 
     public void mostrarCursosDeDocente(String idDocente) {
         Docente docente = obtenerDocente(idDocente);
@@ -317,6 +328,17 @@ public class Universidad {
             return false;
         }
     }
+
+    public boolean desasociarEstudianteDeCurso(String idEstudiante, String idCurso) {
+        Estudiante estudiante = obtenerEstudiante(idEstudiante);
+        Curso curso = obtenerCurso(idCurso);
+        if (curso != null && estudiante != null && curso.getListaEstudiantesAsociados().contains(estudiante)) {
+            curso.getListaEstudiantesAsociados().remove(estudiante);
+            return true;
+        }
+        return false;
+    }
+
 
     public void mostrarEstudiantesDeCurso(String idCurso) {
         Curso curso = obtenerCurso(idCurso);

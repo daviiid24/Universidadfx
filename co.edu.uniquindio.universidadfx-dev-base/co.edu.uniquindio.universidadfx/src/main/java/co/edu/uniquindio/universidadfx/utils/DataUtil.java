@@ -41,6 +41,14 @@ public class DataUtil {
         docente.setCorreo("juan.perez@universidad.edu");
         docente.setOwnedByUniversidad(universidad);
 
+        Docente docente1 = new Docente();
+        docente1.setNombre("Ju");
+        docente1.setApellido("Pérez");
+        docente1.setEdad(50);
+        docente1.setIdentificacion("1234567890");
+        docente1.setCorreo("ju.perez@universidad.edu");
+        docente1.setOwnedByUniversidad(universidad);
+
         Curso curso = new Curso();
         curso.setNombre("Curso");
         curso.setSemestre("10");
@@ -49,13 +57,26 @@ public class DataUtil {
         curso.setJornada("Diurna");
         curso.setIdentificacion("1095");
         curso.setDocenteAsociado(docente);
+
+
+        Curso curso1 = new Curso();
+        curso1.setNombre("Fisica");
+        curso1.setSemestre("10");
+        curso1.setGrupo("05N");
+        curso1.setCreditos(5);
+        curso1.setJornada("Nocturna");
+        curso1.setIdentificacion("1096");
+
+
         curso.getListaEstudiantesAsociados().add(estudiante1);
         curso.getListaEstudiantesAsociados().add(estudiante2);
         curso.getListaEstudiantesAsociados().add(estudiante3);
         curso.actualizarEstudiantesAsociadosTexto();
+        curso1.actualizarEstudiantesAsociadosTexto();
 
         docente.getListaCursosAsociados().add(curso);
         docente.actualizarCursosAsociadosTexto();
+        docente1.actualizarCursosAsociadosTexto();
 
         Rector rector = new Rector();
         rector.setNombre("Pedro");
@@ -68,7 +89,9 @@ public class DataUtil {
         universidad.getListaEstudiantes().add(estudiante2);
         universidad.getListaEstudiantes().add(estudiante3);
         universidad.getListaDocentes().add(docente);
+        universidad.getListaDocentes().add(docente1);
         universidad.getListaCursos().add(curso);
+        universidad.getListaCursos().add(curso1);
 
         return universidad;
     }

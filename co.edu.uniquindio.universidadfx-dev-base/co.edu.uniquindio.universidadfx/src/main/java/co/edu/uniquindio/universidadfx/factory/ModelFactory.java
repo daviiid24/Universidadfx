@@ -80,5 +80,7 @@ public class ModelFactory {
     }
 
 
-
+    public boolean asociarDocenteCurso(String idDocente, String idCurso) {
+        return universidad.asociarCursoADocente(idDocente, idCurso);
+    }
 }
