@@ -1,8 +1,6 @@
 package co.edu.uniquindio.universidadfx.viewcontroller;
 
 import co.edu.uniquindio.universidadfx.controller.MetodosAsociacionController;
-import co.edu.uniquindio.universidadfx.viewcontroller.CrudCursoViewController;
-import co.edu.uniquindio.universidadfx.viewcontroller.CrudDocenteViewController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -56,18 +54,19 @@ public class MetodosAsociacionViewController {
 
     @FXML
     void onActionAsociarEstudiante(ActionEvent event) {
-        //asociarEstudianteCurso();
+        asociarEstudianteCurso();
     }
 
     @FXML
     void onActionDesasociarDocente(ActionEvent event) {
-        //desasociarDocenteCurso();
+        desasociarDocenteCurso();
     }
 
     @FXML
     void onActionDesasociarEstudiante(ActionEvent event) {
-        //desasociarEstudianteCurso();
+        desasociarEstudianteCurso();
     }
+
     @FXML
     void initialize() {
         metodosAsociacionController = new MetodosAsociacionController();
@@ -78,14 +77,14 @@ public class MetodosAsociacionViewController {
         String idCurso = txtIdCursoAsociarDocente.getText();
 
         if (idDocente.isEmpty() || idCurso.isEmpty()) {
-            mostrarAlerta("Campos incompletos", "Debe ingresar ID docente e ID curso.");
+            mostrarAlerta("Campos incompletos", "Debe ingresar el id del docente y el id del curso");
             return;
         }
 
         boolean valido = metodosAsociacionController.asociarDocenteCurso(idDocente, idCurso);
 
         if (valido) {
-            mostrarAlerta("Éxito", "Curso asociado al docente correctamente.");
+            mostrarAlerta("Éxito", "Docente asociado al curso correctamente");
 
             try {
                 CrudCursoViewController crudCurso = ControllerCommunicator.getCrudCursoViewController();
@@ -100,7 +99,100 @@ public class MetodosAsociacionViewController {
 
             limpiarCamposAsociarDocente();
         } else {
-            mostrarAlerta("Error", "No se encontró docente o curso, o la asociación falló.");
+            mostrarAlerta("Error", "No se encontró docente o curso, o la asociación falló");
+        }
+    }
+
+    private void desasociarDocenteCurso() {
+        String idDocente = txtIdDocenteDesasociar.getText();
+        String idCurso = txtIdCursoDesasociarDocente.getText();
+
+        if (idDocente.isEmpty() || idCurso.isEmpty()) {
+            mostrarAlerta("Campos incompletos", "Debe ingresar el id del docente y el id del curso");
+            return;
+        }
+
+        boolean valido = metodosAsociacionController.desasociarDocenteCurso(idDocente, idCurso);
+
+        if (valido) {
+            mostrarAlerta("Éxito", "Docente desasociado del curso correctamente");
+
+            try {
+                CrudCursoViewController crudCurso = ControllerCommunicator.getCrudCursoViewController();
+                CrudDocenteViewController crudDocente = ControllerCommunicator.getCrudDocenteViewController();
+
+                if (crudCurso != null) crudCurso.refrescarTablaCursos();
+                if (crudDocente != null) crudDocente.refrescarTablaDocentes();
+
+            } catch (Exception e) {
+                System.out.println("No se pudo refrescar la tabla: " + e.getMessage());
+            }
+
+            limpiarCamposDesasociarDocente();
+        } else {
+            mostrarAlerta("Error", "No se encontró docente o curso, o la asociación falló");
+        }
+    }
+
+    private void asociarEstudianteCurso() {
+        String idEstudiante = txtIdEstudianteAsociar.getText();
+        String idCurso = txtIdCursoAsociarEstudiante.getText();
+
+        if (idEstudiante.isEmpty() || idCurso.isEmpty()) {
+            mostrarAlerta("Campos incompletos", "Debe ingresar el id del estudiante y el id del curso");
+            return;
+        }
+
+        boolean valido = metodosAsociacionController.asociarEstudianteACurso(idEstudiante, idCurso);
+
+        if (valido) {
+            mostrarAlerta("Éxito", "Estudiante asociado al curso correctamente.");
+
+            try {
+                CrudCursoViewController crudCurso = ControllerCommunicator.getCrudCursoViewController();
+                CrudEstudianteViewController crudEstudiante = ControllerCommunicator.getCrudEstudianteViewController();
+
+                if (crudCurso != null) crudCurso.refrescarTablaCursos();
+                if (crudEstudiante != null) crudEstudiante.refrescarTablaEstudiantes();
+
+            } catch (Exception e) {
+                System.out.println("No se pudo refrescar la tabla: " + e.getMessage());
+            }
+
+            limpiarCamposAsociarEstudiante();
+        } else {
+            mostrarAlerta("Error", "No se encontró estudiante o curso, o la asociación falló");
+        }
+    }
+
+    private void desasociarEstudianteCurso() {
+        String idEstudiante = txtIdEstudianteDesasociar.getText();
+        String idCurso = txtIdCursoDesasociarEstudiante.getText();
+
+        if (idEstudiante.isEmpty() || idCurso.isEmpty()) {
+            mostrarAlerta("Campos incompletos", "Debe ingresar el id del estudiante y el id del curso");
+            return;
+        }
+
+        boolean valido = metodosAsociacionController.desasociarEstudianteACurso(idEstudiante, idCurso);
+
+        if (valido) {
+            mostrarAlerta("Éxito", "Estudiante desasociado al curso correctamente.");
+
+            try {
+                CrudCursoViewController crudCurso = ControllerCommunicator.getCrudCursoViewController();
+                CrudEstudianteViewController crudEstudiante = ControllerCommunicator.getCrudEstudianteViewController();
+
+                if (crudCurso != null) crudCurso.refrescarTablaCursos();
+                if (crudEstudiante != null) crudEstudiante.refrescarTablaEstudiantes();
+
+            } catch (Exception e) {
+                System.out.println("No se pudo refrescar la tabla: " + e.getMessage());
+            }
+
+            limpiarCamposDesasociarEstudiante();
+        } else {
+            mostrarAlerta("Error", "No se encontró estudiante o curso, o la asociación falló");
         }
     }
 
@@ -117,5 +209,18 @@ public class MetodosAsociacionViewController {
         txtIdDocenteAsociar.clear();
         txtIdCursoAsociarDocente.clear();
     }
+    private void limpiarCamposDesasociarDocente() {
+        txtIdDocenteDesasociar.clear();
+        txtIdCursoDesasociarDocente.clear();
+    }
+    private void limpiarCamposAsociarEstudiante() {
+        txtIdEstudianteAsociar.clear();
+        txtIdCursoAsociarEstudiante.clear();
+    }
+    private void limpiarCamposDesasociarEstudiante() {
+        txtIdEstudianteDesasociar.clear();
+        txtIdCursoDesasociarEstudiante.clear();
+    }
+
 
 }

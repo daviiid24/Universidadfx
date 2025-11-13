@@ -105,6 +105,8 @@ public class CrudEstudianteViewController {
     void initialize() {
         estudianteController = new EstudianteController();
         initView();
+
+        ControllerCommunicator.setCrudEstudianteViewController(this);
     }
 
 
@@ -271,5 +273,7 @@ public class CrudEstudianteViewController {
         estudianteSeleccionado = null;
         tableEstudiante.getSelectionModel().clearSelection();
     }
-
+    public void refrescarTablaEstudiantes() {
+        tableEstudiante.refresh();
+    }
 }

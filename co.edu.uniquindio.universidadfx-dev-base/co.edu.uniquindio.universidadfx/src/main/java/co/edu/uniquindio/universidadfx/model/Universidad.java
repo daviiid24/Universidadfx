@@ -294,6 +294,8 @@ public class Universidad {
         if (docente != null && curso != null && curso.getDocenteAsociado() == docente) {
             docente.getListaCursosAsociados().remove(curso);
             curso.setDocenteAsociado(null);
+            docente.actualizarCursosAsociadosTexto();
+            curso.actualizarEstudiantesAsociadosTexto();
             return true;
         }
         return false;
@@ -322,18 +324,24 @@ public class Universidad {
         Curso curso = obtenerCurso(idCurso);
 
         if (estudiante != null && curso != null) {
-            curso.agregarEstudiante(estudiante);
+            curso.getListaEstudiantesAsociados().add(estudiante);
+            estudiante.getListaCursosAsociados().add(curso);
+            curso.actualizarEstudiantesAsociadosTexto();
+            estudiante.actualizarCursosAsociadosTexto();
             return true;
         } else {
             return false;
         }
     }
 
-    public boolean desasociarEstudianteDeCurso(String idEstudiante, String idCurso) {
+    public boolean desasociarEstudianteACurso(String idEstudiante, String idCurso) {
         Estudiante estudiante = obtenerEstudiante(idEstudiante);
         Curso curso = obtenerCurso(idCurso);
         if (curso != null && estudiante != null && curso.getListaEstudiantesAsociados().contains(estudiante)) {
             curso.getListaEstudiantesAsociados().remove(estudiante);
+            estudiante.getListaCursosAsociados().remove(curso);
+            curso.actualizarEstudiantesAsociadosTexto();
+            estudiante.actualizarCursosAsociadosTexto();
             return true;
         }
         return false;

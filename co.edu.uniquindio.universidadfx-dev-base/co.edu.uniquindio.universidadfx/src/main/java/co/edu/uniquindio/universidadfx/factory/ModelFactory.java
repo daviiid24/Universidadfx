@@ -83,4 +83,16 @@ public class ModelFactory {
     public boolean asociarDocenteCurso(String idDocente, String idCurso) {
         return universidad.asociarCursoADocente(idDocente, idCurso);
     }
+
+    public boolean desasociarDocenteCurso(String idDocente, String idCurso) {
+        return universidad.desasociarCursoDeDocente(idDocente, idCurso);
+    }
+
+    public boolean asociarEstudianteACurso(String idEstudiante, String idCurso) {
+        return universidad.asociarEstudianteACurso(idEstudiante, idCurso);
+    }
+
+    public boolean desasociarEstudianteACurso(String idEstudiante, String idCurso) {
+        return universidad.desasociarEstudianteACurso(idEstudiante, idCurso);
+    }
 }

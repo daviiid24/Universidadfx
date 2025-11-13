@@ -33,23 +33,6 @@ public class Curso {
             this.ownedByUniversidad = ownedByUniversidad;
         }
 
-
-    public void agregarEstudiante(Estudiante estudiante) {
-            if (!listaEstudiantesAsociados.contains(estudiante)) {
-                listaEstudiantesAsociados.add(estudiante);
-                estudiante.agregarCurso(this);
-            } if (this.ownedByUniversidad != null) {
-                estudiante.setOwnedByUniversidad(this.ownedByUniversidad);
-            }
-        }
-
-        public void eliminarEstudiante(Estudiante estudiante) {
-            if (listaEstudiantesAsociados.contains(estudiante)) {
-                listaEstudiantesAsociados.remove(estudiante);
-                estudiante.eliminarCurso(this);
-            }
-        }
-
         public Docente getDocenteAsociado() {
             return docenteAsociado;
         }

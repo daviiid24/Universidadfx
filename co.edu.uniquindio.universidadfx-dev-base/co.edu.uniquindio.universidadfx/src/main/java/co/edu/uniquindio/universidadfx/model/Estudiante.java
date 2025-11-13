@@ -10,6 +10,7 @@ public class Estudiante extends Persona {
     private double nota4;
     private double nota5;
     private ArrayList<Curso> listaCursosAsociados = new ArrayList<>();
+    private String cursosAsociadosTexto;
     private Universidad ownedByUniversidad;
 
     public Estudiante() {
@@ -71,24 +72,26 @@ public class Estudiante extends Persona {
         this.listaCursosAsociados = listaCursosAsociados;
     }
 
-    public void agregarCurso(Curso curso) {
-        if (!listaCursosAsociados.contains(curso)) {
-            listaCursosAsociados.add(curso);
-
-            if (!curso.getListaEstudiantesAsociados().contains(this)) {
-                curso.getListaEstudiantesAsociados().add(this);
-            }
-
-            if (this.ownedByUniversidad != null) {
-                curso.setOwnedByUniversidad(this.ownedByUniversidad);
-            }
-        }
+    public String getCursosAsociadosTexto() {
+        return cursosAsociadosTexto;
     }
 
-    public void eliminarCurso(Curso curso) {
-        if (listaCursosAsociados.contains(curso)) {
-            listaCursosAsociados.remove(curso);
-            curso.getListaEstudiantesAsociados().remove(this);
+    public void setCursosAsociadosTexto(String cursosAsociadosTexto) {
+        this.cursosAsociadosTexto = cursosAsociadosTexto;
+    }
+
+    public void actualizarCursosAsociadosTexto() {
+        if (listaCursosAsociados == null || listaCursosAsociados.isEmpty()) {
+            cursosAsociadosTexto = "Sin cursos";
+        } else {
+            String texto = "";
+            for (int i = 0; i < listaCursosAsociados.size(); i++) {
+                texto += listaCursosAsociados.get(i).getNombre();
+                if (i < listaCursosAsociados.size() - 1) {
+                    texto += ", ";
+                }
+            }
+            cursosAsociadosTexto = texto;
         }
     }
 }
