@@ -356,6 +356,44 @@ public class Universidad {
         }
         return false;
     }
+
+    public void calcularDefinitivaEstudiante(String idDocente) {
+        Docente docenteEncontrado = obtenerDocente(idDocente);
+
+        if (docenteEncontrado != null) {
+            for (Estudiante estudiante : getListaEstudiantes()) {
+                double definitiva= docenteEncontrado.calcularDefinitivaEstudiante(estudiante.getNota1(),
+                        estudiante.getNota2(),
+                        estudiante.getNota3());
+                System.out.println("Nota definitiva del estudiante: " + estudiante.getNombre() + " es" + definitiva);
+            }
+        }
+    }
+
+
+    public void calcularEstudianteMayorEstatura(String idDocente) {
+        Docente docenteEncontrado = obtenerDocente(idDocente);
+        if (docenteEncontrado != null) {
+                Estudiante mayor= docenteEncontrado.mostrarEstudianteMayorEstatura();
+                System.out.println("Nota definitiva del estudiante: " + mayor.getNombre());
+            }
+        }
+    }
+public String obtenerEstudiantesNotaMayor4() {
+    String estudiantes="";
+
+    for (Curso curso : listaEstudi) {
+        for (Estudiante e : curso.getListaEstudiantesAsociados()) {
+            if (e.getNota5() > 4.3) {
+                estudiantes.add(e);
+            }
+        }
+    }
+
+    return estudiantes;
+}
+
+
 }
 
 

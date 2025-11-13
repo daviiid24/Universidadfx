@@ -53,19 +53,19 @@ public class Docente extends Persona {
         return definitiva;
     }
 
+    public Estudiante mostrarEstudianteMayorEstatura() {
+        Estudiante mayor = null;
 
-    public String mostrarEstudianteMayorEstatura(Estudiante estudiante1, Estudiante estudiante2, Estudiante estudiante3) {
-        String resultado = "";
-        if (estudiante1.getEstatura() > estudiante2.getEstatura() && estudiante1.getEstatura() > estudiante3.getEstatura()) {
-            resultado = estudiante1.getNombre() + " " + estudiante1.getApellido();
-        } else if (estudiante2.getEstatura() > estudiante3.getEstatura()) {
-            resultado = estudiante2.getNombre() + " " + estudiante2.getApellido();
-        } else {
-            resultado = estudiante3.getNombre() + " " + estudiante3.getApellido();
+        for (Curso curso : listaCursosAsociados) {
+            for (Estudiante estudiante : curso.getListaEstudiantesAsociados()) {
+                if (mayor == null || estudiante.getEstatura() > mayor.getEstatura()) {
+                    mayor = estudiante;
+                }
+            }
         }
-
-        return resultado;
+        return mayor;
     }
+
 
     public String obtenerEstudianteNotaMayor4(Estudiante estudiante) {
         String resultado = "";
@@ -73,25 +73,6 @@ public class Docente extends Persona {
             resultado = estudiante.getNombre() + " " + estudiante.getApellido();
         }
         return resultado;
-    }
-
-    public void agregarCurso(Curso curso) {
-        if (!listaCursosAsociados.contains(curso)) {
-            listaCursosAsociados.add(curso);
-            curso.setDocenteAsociado(this);
-
-            if (this.ownedByUniversidad != null) {
-                curso.setOwnedByUniversidad(this.ownedByUniversidad);
-            }
-            actualizarCursosAsociadosTexto();
-        }
-    }
-
-    public void eliminarCurso(Curso curso) {
-        if (listaCursosAsociados.contains(curso)) {
-            listaCursosAsociados.remove(curso);
-            curso.setDocenteAsociado(null);
-        }
     }
 
     public void actualizarCursosAsociadosTexto() {
