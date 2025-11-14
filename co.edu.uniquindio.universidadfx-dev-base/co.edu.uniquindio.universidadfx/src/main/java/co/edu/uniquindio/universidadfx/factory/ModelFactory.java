@@ -24,24 +24,52 @@ public class ModelFactory {
         return universidad.getListaEstudiantes();
     }
 
-    public Estudiante crearEstudiante(String nombre, String apellido, String identificacion, String edad, String nota1, String nota2, String nota3) {
+    public Estudiante crearEstudiante(String nombre,
+                                      String apellido,
+                                      String identificacion,
+                                      String edad,
+                                      String correo,
+                                      String semestre,
+                                      String nota1,
+                                      String nota2,
+                                      String nota3,
+                                      String nota4,
+                                      String nota5) {
         return universidad.crearEstudiante(
                 nombre,
                 apellido,
                 Integer.parseInt(edad),
+                correo,
+                semestre,
                 Double.parseDouble(nota1),
                 Double.parseDouble(nota2),
                 Double.parseDouble(nota3),
+                Double.parseDouble(nota4),
+                Double.parseDouble(nota5),
                 identificacion);
     }
-    public Estudiante actualizarEstudiante(String nombre, String apellido, String identificacion, String edad, String nota1, String nota2, String nota3) {
+    public Estudiante actualizarEstudiante(String nombre,
+                                           String apellido,
+                                           String identificacion,
+                                           String edad,
+                                           String correo,
+                                           String semestre,
+                                           String nota1,
+                                           String nota2,
+                                           String nota3,
+                                           String nota4,
+                                           String nota5) {
         return universidad.actualizarEstudiante(
                 nombre,
                 apellido,
                 Integer.parseInt(edad),
+                correo,
+                semestre,
                 Double.parseDouble(nota1),
                 Double.parseDouble(nota2),
                 Double.parseDouble(nota3),
+                Double.parseDouble(nota4),
+                Double.parseDouble(nota5),
                 identificacion);
     }
     public Estudiante eliminarEstudiante(String identificacion) {

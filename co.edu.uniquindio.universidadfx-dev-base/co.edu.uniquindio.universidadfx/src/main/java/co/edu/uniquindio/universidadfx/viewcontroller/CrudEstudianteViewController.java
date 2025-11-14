@@ -43,6 +43,18 @@ public class CrudEstudianteViewController {
     private TableColumn<Estudiante, String> tcApellido;
 
     @FXML
+    private TableColumn<Estudiante, String> tcCorreo;
+
+    @FXML
+    private TableColumn<Estudiante, String> tcNota4;
+
+    @FXML
+    private TableColumn<Estudiante, String> tcNota5;
+
+    @FXML
+    private TableColumn<Estudiante, String> tcSemestre;
+
+    @FXML
     private TableColumn<Estudiante, String> tcEdad;
 
     @FXML
@@ -73,6 +85,11 @@ public class CrudEstudianteViewController {
     @FXML
     private TextField txtNombre;
 
+    @FXML
+    private TextField txtCorreo;
+
+    @FXML
+    private TextField txtSemestre;
 
     @FXML
     private TextField txtNota1;
@@ -83,6 +100,11 @@ public class CrudEstudianteViewController {
     @FXML
     private TextField txtNota3;
 
+    @FXML
+    private TextField txtNota4;
+
+    @FXML
+    private TextField txtNota5;
 
 
     @FXML
@@ -115,14 +137,34 @@ public class CrudEstudianteViewController {
         String apellido = txtApellido.getText();
         String identificacion = txtIdentificacion.getText();
         String edad = txtEdad.getText();
+        String correo = txtCorreo.getText();
+        String semestre = txtSemestre.getText();
         String nota1 = txtNota1.getText();
         String nota2 = txtNota2.getText();
         String nota3 = txtNota3.getText();
+        String nota4 = txtNota4.getText();
+        String nota5= txtNota5.getText();
 
-        boolean datosValidos = validarCampos(nombre,apellido,identificacion,edad, nota1, nota2, nota3);
+
+        boolean datosValidos = validarCampos(nombre,
+                apellido,
+                identificacion,
+                edad,
+                semestre,
+                nota1,
+                nota2,
+                nota3, nota4, nota5);
 
         if (datosValidos == true){
-            Estudiante estudiante = estudianteController.crearEstudiante(nombre,apellido,identificacion,edad, nota1, nota2, nota3);
+            Estudiante estudiante = estudianteController.crearEstudiante(nombre,
+                    apellido,
+                    identificacion,
+                    edad,
+                    correo,
+                    semestre,
+                    nota1,
+                    nota2,
+                    nota3, nota4, nota5);
             if(estudiante != null){
                 mostrarMensaje("Notificación", "Creación estudiante", "Estudiante creado",Alert.AlertType.CONFIRMATION);
                 listaEstudiantes.add(estudiante);
@@ -141,14 +183,33 @@ public class CrudEstudianteViewController {
         String apellido = txtApellido.getText();
         String identificacion = txtIdentificacion.getText();
         String edad = txtEdad.getText();
+        String correo = txtCorreo.getText();
+        String semestre = txtSemestre.getText();
         String nota1 = txtNota1.getText();
         String nota2 = txtNota2.getText();
         String nota3 = txtNota3.getText();
+        String nota4 = txtNota4.getText();
+        String nota5= txtNota5.getText();
 
-        boolean datosValidos = validarCampos(nombre,apellido,identificacion,edad, nota1, nota2, nota3);
+        boolean datosValidos = validarCampos(nombre,
+                apellido,
+                identificacion,
+                edad,
+                semestre,
+                nota1,
+                nota2,
+                nota3, nota4, nota5);
 
         if (datosValidos == true){
-            Estudiante estudiante = estudianteController.actualizarEstudiante(nombre,apellido,identificacion,edad, nota1, nota2, nota3);
+            Estudiante estudiante = estudianteController.actualizarEstudiante(nombre,
+                    apellido,
+                    identificacion,
+                    edad,
+                    correo,
+                    semestre,
+                    nota1,
+                    nota2,
+                    nota3, nota4, nota5);
             if(estudiante != null){
                 mostrarMensaje("Notificación", "Actualización estudiante", "Estudiante actualizado",Alert.AlertType.CONFIRMATION);
                 tableEstudiante.refresh();
@@ -189,10 +250,22 @@ public class CrudEstudianteViewController {
                                   String apellido,
                                   String identificacion,
                                   String edad,
+                                  String semestre,
                                   String nota1,
                                   String nota2,
-                                  String nota3) {
-        if(nombre.isEmpty() || apellido.isEmpty() || identificacion.isEmpty() || edad.isEmpty() || nota1.isEmpty() || nota2.isEmpty() || nota3.isEmpty()){
+                                  String nota3,
+                                  String nota4,
+                                  String nota5) {
+        if(nombre.isEmpty() ||
+                apellido.isEmpty() ||
+                identificacion.isEmpty() ||
+                edad.isEmpty() ||
+                semestre.isEmpty() ||
+                nota1.isEmpty() ||
+                nota2.isEmpty() ||
+                nota3.isEmpty() ||
+                nota4.isEmpty() ||
+                nota5.isEmpty()){
             return false;
         }else{
             return true;
@@ -217,9 +290,14 @@ public class CrudEstudianteViewController {
         tcApellido.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getApellido()));
         tcIdentificacion.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getIdentificacion()));
         tcEdad.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getEdad())));
+        tcCorreo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getCorreo()));
+        tcSemestre.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getSemestre()));
         tcNota1.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota1())));
         tcNota2.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota2())));
         tcNota3.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota3())));
+        tcNota4.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota4())));
+        tcNota5.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getNota5())));
+
     }
 
     private void listenerSelection() {
@@ -235,9 +313,13 @@ public class CrudEstudianteViewController {
             txtApellido.setText(estudianteSeleccionado.getApellido());
             txtIdentificacion.setText(estudianteSeleccionado.getIdentificacion());
             txtEdad.setText(String.valueOf(estudianteSeleccionado.getEdad()));
+            txtCorreo.setText(estudianteSeleccionado.getCorreo());
+            txtSemestre.setText(estudianteSeleccionado.getSemestre());
             txtNota1.setText(String.valueOf(estudianteSeleccionado.getNota1()));
             txtNota2.setText(String.valueOf(estudianteSeleccionado.getNota2()));
             txtNota3.setText(String.valueOf(estudianteSeleccionado.getNota3()));
+            txtNota4.setText(String.valueOf(estudianteSeleccionado.getNota4()));
+            txtNota5.setText(String.valueOf(estudianteSeleccionado.getNota5()));
         }
     }
 
@@ -267,9 +349,13 @@ public class CrudEstudianteViewController {
         txtApellido.clear();
         txtIdentificacion.clear();
         txtEdad.clear();
+        txtCorreo.clear();
+        txtSemestre.clear();
         txtNota1.clear();
         txtNota2.clear();
         txtNota3.clear();
+        txtNota4.clear();
+        txtNota5.clear();
         estudianteSeleccionado = null;
         tableEstudiante.getSelectionModel().clearSelection();
     }

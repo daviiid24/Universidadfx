@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Estudiante extends Persona {
 
+    private String correo;
+    private String semestre;
     private double nota1;
     private double nota2;
     private double nota3;
@@ -14,6 +16,22 @@ public class Estudiante extends Persona {
     private Universidad ownedByUniversidad;
 
     public Estudiante() {
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(String semestre) {
+        this.semestre = semestre;
     }
 
     public double getNota1() {
@@ -40,14 +58,6 @@ public class Estudiante extends Persona {
         this.nota3 = nota3;
     }
 
-    public Universidad getOwnedByUniversidad() {
-        return ownedByUniversidad;
-    }
-
-    public void setOwnedByUniversidad(Universidad ownedByUniversidad) {
-        this.ownedByUniversidad = ownedByUniversidad;
-    }
-
     public double getNota4() {
         return nota4;
     }
@@ -62,6 +72,14 @@ public class Estudiante extends Persona {
 
     public void setNota5(double nota5) {
         this.nota5 = nota5;
+    }
+
+    public Universidad getOwnedByUniversidad() {
+        return ownedByUniversidad;
+    }
+
+    public void setOwnedByUniversidad(Universidad ownedByUniversidad) {
+        this.ownedByUniversidad = ownedByUniversidad;
     }
 
     public ArrayList<Curso> getListaCursosAsociados() {

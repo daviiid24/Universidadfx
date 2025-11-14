@@ -54,9 +54,13 @@ public class Universidad {
     public Estudiante crearEstudiante(String nombre,
                                       String apellido,
                                       int edad,
+                                      String correo,
+                                      String semestre,
                                       double nota1,
                                       double nota2,
                                       double nota3,
+                                      double nota4,
+                                      double nota5,
                                       String identificacion) {
 
         Estudiante estudianteEncontrado = obtenerEstudiante(identificacion);
@@ -65,9 +69,13 @@ public class Universidad {
             estudiante.setNombre(nombre);
             estudiante.setApellido(apellido);
             estudiante.setEdad(edad);
+            estudiante.setCorreo(correo);
+            estudiante.setSemestre(semestre);
             estudiante.setNota1(nota1);
             estudiante.setNota2(nota2);
             estudiante.setNota3(nota3);
+            estudiante.setNota4(nota4);
+            estudiante.setNota5(nota5);
             estudiante.setIdentificacion(identificacion);
             getListaEstudiantes().add(estudiante);
 
@@ -87,15 +95,30 @@ public class Universidad {
         }
     }
 
-    public Estudiante actualizarEstudiante(String nombre, String apellido, int edad, double nota1, double nota2, double nota3, String identificacion) {
+    public Estudiante actualizarEstudiante(String nombre,
+                                           String apellido,
+                                           int edad,
+                                           String correo,
+                                           String semestre,
+                                           double nota1,
+                                           double nota2,
+                                           double nota3,
+                                           double nota4,
+                                           double nota5,
+                                           String identificacion) {
+
         Estudiante estudianteEncontrado = obtenerEstudiante(identificacion);
         if (estudianteEncontrado.getIdentificacion().equalsIgnoreCase(identificacion)) {
             estudianteEncontrado.setNombre(nombre);
             estudianteEncontrado.setApellido(apellido);
             estudianteEncontrado.setEdad(edad);
+            estudianteEncontrado.setCorreo(correo);
+            estudianteEncontrado.setSemestre(semestre);
             estudianteEncontrado.setNota1(nota1);
             estudianteEncontrado.setNota2(nota2);
             estudianteEncontrado.setNota3(nota3);
+            estudianteEncontrado.setNota4(nota4);
+            estudianteEncontrado.setNota5(nota5);
             estudianteEncontrado.setIdentificacion(identificacion);
 
             return estudianteEncontrado;
@@ -366,7 +389,8 @@ public class Universidad {
                 double definitiva= docenteEncontrado.calcularDefinitivaEstudiante(estudiante.getNota1(),
                         estudiante.getNota2(),
                         estudiante.getNota3());
-                resultado += "Nota del estudiante: " + estudiante.getNombre() + " es " + definitiva + "\n";
+                resultado += "Notas del estudiante: " + estudiante.getNombre() + " (" + estudiante.getNota1()
+                        + ", " + estudiante.getNota2() + ", " + estudiante.getNota3() + "). El promedio es: " + String.format("%.2f", definitiva) + "\n";
                 definitiva=0.0;
             }
         } else {
