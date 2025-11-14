@@ -135,4 +135,8 @@ public class ModelFactory {
     public String consultarNotasMayor(String idDocente) {
         return universidad.mostrarEstudiantesNotaMayor4(idDocente);
     }
+
+    public String consultarDocente(String idDocente) {
+        return universidad.consultarDocente(idDocente);
+    }
 }

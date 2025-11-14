@@ -12,20 +12,18 @@ public class ConsultasViewController {
 
     ConsultasController consultasController;
 
-    @FXML
-    private Button btnConsultarEstatura;
 
     @FXML
-    private Button btnConsultarNotaAlta;
+    private Button btnConsultarDocente;
+
+    @FXML
+    private Button btnConsultarDocentes;
 
     @FXML
     private Button btnConsultarNotas;
 
     @FXML
-    private TextField txtIdDocenteEstatura;
-
-    @FXML
-    private TextField txtIdDocenteNotaAlta;
+    private TextField txtIdDocente;
 
     @FXML
     private TextField txtIdDocenteNotas;
@@ -34,13 +32,14 @@ public class ConsultasViewController {
     private TextArea txtResultado;
 
     @FXML
-    void onActionConsultarEstatura(ActionEvent event) {
-            consultarEstaturaMayor();
+    void onActionConsultarDocente(ActionEvent event) {
+            consultarDocente();
     }
 
     @FXML
-    void onActionConsultarNotaAlta(ActionEvent event) {
-            consultarNotasMayor();
+    void onActionConsultarDocentes(ActionEvent event) {
+        //consultarDocentes();
+
     }
 
     @FXML
@@ -62,22 +61,22 @@ public class ConsultasViewController {
             txtResultado.setText(resultado);
         }
     }
-    private void consultarEstaturaMayor() {
-        String idDocente = txtIdDocenteEstatura.getText();
+    private void consultarDocente() {
+        String idDocente = txtIdDocente.getText();
 
         if (!idDocente.isEmpty()) {
-            String resultado = consultasController.consultarEstaturaMayor(idDocente);
+            String resultado = consultasController.consultarDocente(idDocente);
             txtResultado.setText(resultado);
         }
     }
 
-    private void consultarNotasMayor() {
+    /*private void consultarNotasMayor() {
         String idDocente = txtIdDocenteNotaAlta.getText();
 
         if (!idDocente.isEmpty()) {
             String resultado = consultasController.consultarNotasMayor(idDocente);
             txtResultado.setText(resultado);
         }
-    }
+    }*/
 
 }

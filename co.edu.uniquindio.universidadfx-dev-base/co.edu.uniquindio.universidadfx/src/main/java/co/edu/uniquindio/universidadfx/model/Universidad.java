@@ -437,6 +437,21 @@ public class Universidad {
         return resultado;
     }
 
+    public String consultarDocente(String idDocente) {
+        Docente docenteEncontrado = obtenerDocente(idDocente);
+        String resultado="";
+        if (docenteEncontrado != null) {
+            resultado="{\n" +
+                    "  \"nombre\":\"" + docenteEncontrado.getNombre() + "\",\n" +
+                    "  \"apellido\":\"" + docenteEncontrado.getApellido() + "\",\n" +
+                    "  \"cedula\":\"" + docenteEncontrado.getIdentificacion() + "\",\n" +
+                    "  \"correo\":\"" + docenteEncontrado.getCorreo() + "\",\n" +
+                    "  \"edad\":\"" + docenteEncontrado.getEdad() + "\"\n" +
+                    "}";
+
+        }
+        return resultado;
+    }
 }
 
 

@@ -39,7 +39,7 @@
                 </TitledPane>
 
                 <!-- BLOQUE 2 -->
-                <TitledPane expanded="true" text="Mostrar estudiante con mayor estatura">
+                <TitledPane expanded="true" text="Mostrar datos docente">
                     <content>
                         <VBox spacing="10">
                             <padding>
@@ -49,8 +49,8 @@
                                 <HBox spacing="10">
                                     <children>
                                         <Label text="Cédula Docente:" />
-                                        <TextField fx:id="txtIdDocenteEstatura" prefWidth="200.0" />
-                                        <Button fx:id="btnConsultarEstatura" onAction="#onActionConsultarEstatura" text="Consultar mayor estatura" />
+                                        <TextField fx:id="txtIdDocente" prefWidth="200.0" />
+                                        <Button fx:id="btnConsultarDocente" onAction="#onActionConsultarDocente" text="Consultar datos" />
                                     </children>
                                 </HBox>
                             </children>
@@ -59,7 +59,7 @@
                 </TitledPane>
 
                 <!-- BLOQUE 3 -->
-                <TitledPane expanded="true" text="Mostrar estudiantes con nota mayor a 4.0">
+                <TitledPane expanded="true" text="Mostrar docentes rango edad entre 25 y 35 años">
                     <content>
                         <VBox spacing="10">
                             <padding>
@@ -68,9 +68,7 @@
                             <children>
                                 <HBox spacing="10">
                                     <children>
-                                        <Label text="Cédula Docente:" />
-                                        <TextField fx:id="txtIdDocenteNotaAlta" prefWidth="200.0" />
-                                        <Button fx:id="btnConsultarNotaAlta" onAction="#onActionConsultarNotaAlta" text="Consultar nota &gt; 4.0" />
+                                        <Button fx:id="btnConsultarDocentes" onAction="#onActionConsultarDocentes" text="Consultar docentes" />
                                     </children>
                                 </HBox>
                             </children>

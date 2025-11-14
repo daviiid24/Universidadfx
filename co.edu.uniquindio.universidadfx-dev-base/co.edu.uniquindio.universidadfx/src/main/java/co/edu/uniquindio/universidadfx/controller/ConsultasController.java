@@ -13,11 +13,7 @@ public class ConsultasController {
         return modelFactory.consultarDefinitivas(idDocente);
     }
 
-    public String consultarEstaturaMayor(String idDocente) {
-        return modelFactory.consultarEstaturaMayor(idDocente);
-    }
-
-    public String consultarNotasMayor(String idDocente) {
-        return modelFactory.consultarNotasMayor(idDocente);
+    public String consultarDocente(String idDocente) {
+        return modelFactory.consultarDocente(idDocente);
     }
 }
